@@ -31,6 +31,13 @@ func TestIsValidTree(t *testing.T) {
 	nl[1].right = nl[2]
 	nl[2].left = nl[1]
 
+	// remove cycle
+	nl[2].left = nil
+	assert.True(t, IsValidTree(nl), "No cycles")
+
+	// one node not connected
+	nl[1].right = nil
+	assert.False(t, IsValidTree(nl), "One node not connected")
 }
 
 func genListOfNodes(n int) (nl NodeList) {
