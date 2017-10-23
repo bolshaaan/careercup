@@ -1,3 +1,4 @@
+// https://www.careercup.com/question?id=5183214233583616
 //node {
 //node * left, * right;
 //}
@@ -51,7 +52,6 @@ func IsValidTree(nl NodeList) bool {
 
 	// find node, that have no parents
 	// make map nodes ( pointer )
-
 	nodes := make(MarkedNodes)
 
 	// fill map nodes
