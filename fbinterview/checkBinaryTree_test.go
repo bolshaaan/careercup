@@ -17,9 +17,19 @@ func TestIsValidTree(t *testing.T) {
 	assert.True(t, IsValidTree(oneNodeList), "One Node List")
 
 	// list 2 nodes
-	nodeList := genListOfNodes(2)
-	nodeList[0].left = nodeList[1]
-	assert.True(t, IsValidTree(nodeList), "Yep, linked list")
+	nl := genListOfNodes(2)
+	nl[0].left = nl[1]
+	assert.True(t, IsValidTree(nl), "Yep, linked list")
+
+	// false - cycle
+	nl[1].right = nl[0]
+	assert.False(t, IsValidTree(nl), "Nope")
+
+	// 3 nodes, is cycled
+	nl = genListOfNodes(3)
+	nl[0].left = nl[1]
+	nl[1].right = nl[2]
+	nl[2].left = nl[1]
 
 }
 
