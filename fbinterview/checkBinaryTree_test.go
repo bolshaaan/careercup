@@ -3,6 +3,8 @@ package fbinterview
 import (
 	"testing"
 
+	"strings"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -38,6 +40,26 @@ func TestIsValidTree(t *testing.T) {
 	// one node not connected
 	nl[1].right = nil
 	assert.False(t, IsValidTree(nl), "One node not connected")
+}
+
+func TestSplit(t *testing.T) {
+
+	var tests = []struct {
+		sep  string
+		text string
+		exp  int
+	}{
+		{sep: ":", text: "a:b:c", exp: 3},
+	}
+
+	for _, test := range tests {
+
+		res := strings.Split(test.text, test.sep)
+		if len(res) != test.exp {
+			t.Errorf("Some shit: expected = %d, got = %s", len(res), test.exp)
+		}
+	}
+
 }
 
 func genListOfNodes(n int) (nl NodeList) {
